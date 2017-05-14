@@ -1,0 +1,30 @@
+﻿<Window x:Class="MaximStartsev.KanaTrainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:converters="clr-namespace:MaximStartsev.KanaTrainer.MVVM"
+        mc:Ignorable="d"
+        Title="Kana Trainer" Height="350" Width="525">
+    <Grid>
+        <Grid.Resources>
+            <converters:KanaTypeToInt32Converter x:Key="KanaToIntConverter" />
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBox Text="{Binding TextConvert, Mode=TwoWay}" Margin="2" AcceptsReturn="True" />
+            <ComboBox Margin="2" Grid.Row="1"
+                      SelectedIndex="{Binding KanaType, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
+                <ComboBoxItem Content="Хирагана" />
+                <ComboBoxItem Content="Катакана" />
+            </ComboBox>
+        </Grid>
+    </Grid>
+</Window>
