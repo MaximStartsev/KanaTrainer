@@ -10,21 +10,68 @@
         <Grid.Resources>
             <converters:KanaTypeToInt32Converter x:Key="KanaToIntConverter" />
         </Grid.Resources>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <TextBox Text="{Binding TextConvert, Mode=TwoWay}" Margin="2" AcceptsReturn="True" />
-            <ComboBox Margin="2" Grid.Row="1"
+        <TabControl>
+            <TabItem Header="Транслятор">
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBox Text="{Binding TextConvert, Mode=TwoWay}" Margin="2" AcceptsReturn="True" />
+                        <ComboBox Margin="2" Grid.Row="1"
                       SelectedIndex="{Binding KanaType, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
-                <ComboBoxItem Content="Хирагана" />
-                <ComboBoxItem Content="Катакана" />
-            </ComboBox>
-        </Grid>
+                            <ComboBoxItem Content="Хирагана" />
+                            <ComboBoxItem Content="Катакана" />
+                        </ComboBox>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Мора -> слог (тест)" DataContext="{Binding MoraToSyllableTesting}">
+                <TabItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Border BorderBrush="LightGray" BorderThickness="2" Margin="20"
+                                VerticalAlignment="Top" HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding CurrentMora, FallbackValue='あ'}" Margin="20" FontSize="50" />
+                        </Border>
+                        <Grid Grid.Row="1">
+                            <Button Content="Назад" Margin="10" Width="100" HorizontalAlignment="Left"
+                                    Command="{Binding BackCommand}"/>
+                            <TextBlock Text="{Binding Message, FallbackValue='Выберите верный вариант ответа'}"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                            <Button Content="Вперёд" Margin="10" Width="100" HorizontalAlignment="Right" 
+                                    Command="{Binding ForwardCommand}"/>
+                        </Grid>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantA}"
+                                    Content="{Binding VariantA, FallbackValue='A'}" Margin="5" Width="100" />
+                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantB}"
+                                    Content="{Binding VariantB, FallbackValue='U'}" Margin="5" Width="100" />
+                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantC}"
+                                    Content="{Binding VariantC, FallbackValue='E'}" Margin="5" Width="100" />
+                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantD}"
+                                    Content="{Binding VariantD, FallbackValue='I'}" Margin="5" Width="100" />
+                        </StackPanel>
+                        <ComboBox Margin="2" Grid.Row="3"
+                      SelectedIndex="{Binding Kana, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
+                            <ComboBoxItem Content="Хирагана" />
+                            <ComboBoxItem Content="Катакана" />
+                        </ComboBox>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Слог -> мора (тест)">
+
+            </TabItem>
+            <TabItem Header="Мора -> слог (письмо)">
+
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

@@ -1,13 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace MaximStartsev.KanaTrainer.Utilities
 {
     public abstract class AlphabetConverter
     {
-        protected abstract Dictionary<string, string> Alphabet { get; set; }
+        public abstract Dictionary<string, string> Alphabet { get; protected set; }
 
         public string Convert(string text)
         {
+            if (String.IsNullOrEmpty(text)) return String.Empty;
             text = text.ToLower();
             foreach (var pair in Alphabet)
             {
@@ -17,6 +19,7 @@ namespace MaximStartsev.KanaTrainer.Utilities
         }
         public string ConvertBack(string text)
         {
+            if (String.IsNullOrEmpty(text)) return String.Empty;
             foreach (var pair in Alphabet)
             {
                 text = text.Replace(pair.Value, pair.Key);

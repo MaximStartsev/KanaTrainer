@@ -4,7 +4,7 @@ namespace MaximStartsev.KanaTrainer.Utilities
 {
     public sealed class HiraganaConverter:AlphabetConverter
     {
-        protected override Dictionary<string, string> Alphabet { get; set; } = new Dictionary<string, string>
+        public override Dictionary<string, string> Alphabet { get; protected set; } = new Dictionary<string, string>
         {
             { "ka", "か" },
             { "sa", "さ" },

@@ -1,6 +1,10 @@
-﻿using MaximStartsev.KanaTrainer.Utilities;
+﻿using MaximStartsev.KanaTrainer.MVVM;
+using MaximStartsev.KanaTrainer.Utilities;
+using MaximStartsev.KanaTrainer.ViewModels;
+using Microsoft.Practices.Unity;
 using System;
 using System.ComponentModel;
+using System.Windows.Input;
 
 namespace MaximStartsev.KanaTrainer
 {
@@ -39,6 +43,35 @@ namespace MaximStartsev.KanaTrainer
                 }
             }
         }
+
+        public ICommand StartTrainingCommand { get; private set; }
+        private MoraToSyllableTestingViewModel _moraToSyllableTesting;
+        public MoraToSyllableTestingViewModel MoraToSyllableTesting
+        {
+            get
+            {
+                if(_moraToSyllableTesting == null)
+                {
+                    _moraToSyllableTesting = new MoraToSyllableTestingViewModel();
+                }
+                return _moraToSyllableTesting;
+            }
+        }
+
+        private readonly UnityContainer _container;
+        public MainViewModel()
+        {
+            _container = new UnityContainer();
+            _container.RegisterInstance(typeof(MoraToSyllableTestingViewModel));
+            _container.RegisterInstance(typeof(SyllableToMoraTestingViewModel));
+            _container.RegisterInstance(typeof(MoraToSillableWritingViewModel));
+            StartTrainingCommand = new ActionCommand(o => StartTraining(), o => true);
+        }
+        public void StartTraining()
+        {
+
+        }
+
         private static string ConvertText(string text, KanaType type)
         {
             switch (type)
