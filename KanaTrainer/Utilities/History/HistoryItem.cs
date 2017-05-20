@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaximStartsev.KanaTrainer.ViewModels
+namespace MaximStartsev.KanaTrainer.Utilities.History
 {
-    internal sealed class SyllableToMoraTestingViewModel:BaseViewModel
+    internal class HistoryItem
     {
     }
 }

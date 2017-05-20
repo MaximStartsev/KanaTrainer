@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:MaximStartsev.KanaTrainer.MVVM"
+        xmlns:views="clr-namespace:MaximStartsev.KanaTrainer.Views"
         mc:Ignorable="d"
         Title="Kana Trainer" Height="350" Width="525">
     <Grid>
@@ -27,50 +28,30 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem Header="Мора -> слог (тест)" DataContext="{Binding MoraToSyllableTesting}">
+            <TabItem Header="Мора -> слог (тест)">
+                <TabItem.Content>
+                    <views:TestingView DataContext="{Binding MoraToSyllableTesting}" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Слог -> мора (тест)">
+                <TabItem.Content>
+                    <views:TestingView DataContext="{Binding SyllableToMoraTesting}" />
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Мора -> слог (письмо)">
                 <TabItem.Content>
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition />
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Border BorderBrush="LightGray" BorderThickness="2" Margin="20"
                                 VerticalAlignment="Top" HorizontalAlignment="Center">
                             <TextBlock Text="{Binding CurrentMora, FallbackValue='あ'}" Margin="20" FontSize="50" />
                         </Border>
-                        <Grid Grid.Row="1">
-                            <Button Content="Назад" Margin="10" Width="100" HorizontalAlignment="Left"
-                                    Command="{Binding BackCommand}"/>
-                            <TextBlock Text="{Binding Message, FallbackValue='Выберите верный вариант ответа'}"
-                                       VerticalAlignment="Center" HorizontalAlignment="Center" />
-                            <Button Content="Вперёд" Margin="10" Width="100" HorizontalAlignment="Right" 
-                                    Command="{Binding ForwardCommand}"/>
-                        </Grid>
-                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantA}"
-                                    Content="{Binding VariantA, FallbackValue='A'}" Margin="5" Width="100" />
-                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantB}"
-                                    Content="{Binding VariantB, FallbackValue='U'}" Margin="5" Width="100" />
-                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantC}"
-                                    Content="{Binding VariantC, FallbackValue='E'}" Margin="5" Width="100" />
-                            <Button Command="{Binding ReplyCommand}" CommandParameter="{Binding VariantD}"
-                                    Content="{Binding VariantD, FallbackValue='I'}" Margin="5" Width="100" />
-                        </StackPanel>
-                        <ComboBox Margin="2" Grid.Row="3"
-                      SelectedIndex="{Binding Kana, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
-                            <ComboBoxItem Content="Хирагана" />
-                            <ComboBoxItem Content="Катакана" />
-                        </ComboBox>
+                        <TextBox Text="{Binding Answer}" Grid.Row="1" Margin="10" Width="100" />
                     </Grid>
                 </TabItem.Content>
-            </TabItem>
-            <TabItem Header="Слог -> мора (тест)">
-
-            </TabItem>
-            <TabItem Header="Мора -> слог (письмо)">
-
             </TabItem>
         </TabControl>
     </Grid>

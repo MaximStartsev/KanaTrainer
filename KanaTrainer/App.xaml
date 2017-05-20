@@ -1,8 +1,9 @@
 ﻿<Application x:Class="MaximStartsev.KanaTrainer.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:MaximStartsev.KanaTrainer.MVVM"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <converters:KanaTypeToInt32Converter x:Key="KanaToIntConverter" />
     </Application.Resources>
 </Application>

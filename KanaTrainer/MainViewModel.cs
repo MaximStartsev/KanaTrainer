@@ -1,4 +1,5 @@
-﻿using MaximStartsev.KanaTrainer.MVVM;
+﻿using MaximStartsev.KanaTrainer.Models;
+using MaximStartsev.KanaTrainer.MVVM;
 using MaximStartsev.KanaTrainer.Utilities;
 using MaximStartsev.KanaTrainer.ViewModels;
 using Microsoft.Practices.Unity;
@@ -45,16 +46,28 @@ namespace MaximStartsev.KanaTrainer
         }
 
         public ICommand StartTrainingCommand { get; private set; }
-        private MoraToSyllableTestingViewModel _moraToSyllableTesting;
-        public MoraToSyllableTestingViewModel MoraToSyllableTesting
+        private TestingViewModel _moraToSyllableTesting;
+        public TestingViewModel MoraToSyllableTesting
         {
             get
             {
                 if(_moraToSyllableTesting == null)
                 {
-                    _moraToSyllableTesting = new MoraToSyllableTestingViewModel();
+                    _moraToSyllableTesting = new TestingViewModel(new MoraToSyllableTestingModel());
                 }
                 return _moraToSyllableTesting;
+            }
+        }
+        private TestingViewModel  _syllableToMoraTesting;
+        public TestingViewModel SyllableToMoraTesting
+        {
+            get
+            {
+                if (_syllableToMoraTesting == null)
+                {
+                    _syllableToMoraTesting = new TestingViewModel(new SyllableToMoraTestingModel());
+                }
+                return _syllableToMoraTesting;
             }
         }
 
@@ -62,8 +75,7 @@ namespace MaximStartsev.KanaTrainer
         public MainViewModel()
         {
             _container = new UnityContainer();
-            _container.RegisterInstance(typeof(MoraToSyllableTestingViewModel));
-            _container.RegisterInstance(typeof(SyllableToMoraTestingViewModel));
+            _container.RegisterInstance(typeof(TestingViewModel));
             _container.RegisterInstance(typeof(MoraToSillableWritingViewModel));
             StartTrainingCommand = new ActionCommand(o => StartTraining(), o => true);
         }

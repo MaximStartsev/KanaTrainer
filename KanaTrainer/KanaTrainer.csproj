@@ -75,7 +75,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\TestingModel.cs" />
     <Compile Include="Models\MoraToSyllableTestingModel.cs" />
+    <Compile Include="Models\SyllableToMoraTestingModel.cs" />
+    <Compile Include="Models\TestIteration.cs" />
     <Compile Include="MVVM\ActionCommand.cs" />
     <Compile Include="MVVM\VariantButtonType.cs" />
     <Compile Include="Resources\CommonResources.Designer.cs">
@@ -85,11 +88,15 @@
     </Compile>
     <Compile Include="Utilities\AlphabetConverter.cs" />
     <Compile Include="Utilities\HiraganaConverter.cs" />
+    <Compile Include="Utilities\History\HistoryItem.cs" />
+    <Compile Include="Utilities\History\HistoryProcessor.cs" />
     <Compile Include="Utilities\KatakanaConverter.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MoraToSillableWritingViewModel.cs" />
-    <Compile Include="ViewModels\MoraToSyllableTestingViewModel.cs" />
-    <Compile Include="ViewModels\SyllableToMoraTestingViewModel.cs" />
+    <Compile Include="ViewModels\TestingViewModel.cs" />
+    <Compile Include="Views\TestingView.xaml.cs">
+      <DependentUpon>TestingView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -105,6 +112,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\TestingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
