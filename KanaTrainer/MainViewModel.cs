@@ -70,13 +70,24 @@ namespace MaximStartsev.KanaTrainer
                 return _syllableToMoraTesting;
             }
         }
-
+        private WritingViewModel _moraToSyllableWriting;
+        public WritingViewModel MoraToSyllableWriting
+        {
+            get
+            {
+                if(_moraToSyllableWriting == null)
+                {
+                    _moraToSyllableWriting = new WritingViewModel(new MoraToSyllableWritingModel());
+                }
+                return _moraToSyllableWriting;
+            }
+        }
         private readonly UnityContainer _container;
         public MainViewModel()
         {
             _container = new UnityContainer();
             _container.RegisterInstance(typeof(TestingViewModel));
-            _container.RegisterInstance(typeof(MoraToSillableWritingViewModel));
+            _container.RegisterInstance(typeof(WritingViewModel));
             StartTrainingCommand = new ActionCommand(o => StartTraining(), o => true);
         }
         public void StartTraining()

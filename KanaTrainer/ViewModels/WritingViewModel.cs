@@ -1,18 +1,14 @@
 ﻿using MaximStartsev.KanaTrainer.Models;
 using MaximStartsev.KanaTrainer.MVVM;
 using MaximStartsev.KanaTrainer.Resources;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 
 namespace MaximStartsev.KanaTrainer.ViewModels
 {
-    internal sealed class TestingViewModel:INotifyPropertyChanged
+    internal sealed class WritingViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private string _currentMora;
+         private string _currentMora;
         public string CurrentMora
         {
             get { return _currentMora; }
@@ -31,26 +27,14 @@ namespace MaximStartsev.KanaTrainer.ViewModels
             get { return _message; }
             set
             {
-                if(_message != value)
+                if (_message != value)
                 {
                     _message = value;
                     InvokePropertyChanged(nameof(Message));
                 }
             }
         }
-        private IEnumerable<string> _variantes;
-        public IEnumerable<string> Variantes
-        {
-            get { return _variantes; }
-            set
-            {
-                if(_variantes != value)
-                {
-                    _variantes = value;
-                    InvokePropertyChanged(nameof(Variantes));
-                }
-            }
-        }
+
         public KanaType Kana
         {
             get { return _model.Kana; }
@@ -59,10 +43,9 @@ namespace MaximStartsev.KanaTrainer.ViewModels
         public ICommand ReplyCommand { get; private set; }
         public ICommand BackCommand { get; private set; }
         public ICommand ForwardCommand { get; private set; }
-        private Random _random = new Random();
-        private TestingModel _model;
-        
-        public TestingViewModel(TestingModel model)
+
+        private readonly WritingModel _model;
+        public WritingViewModel(WritingModel model)
         {
             ReplyCommand = new ActionCommand(InvokeReply, o => true);
             BackCommand = new ActionCommand(o => InvokePrev(), o => true);
@@ -76,9 +59,7 @@ namespace MaximStartsev.KanaTrainer.ViewModels
         }
         private void InvokeNext()
         {
-            var test = _model.GetNext();
-            CurrentMora = test.Question;
-            Variantes = test.Variantes;
+            CurrentMora = _model.GetNext();
             Message = CommonResources.SelectValueMessage;
         }
         private void InvokeReply(object parameter)
@@ -86,9 +67,10 @@ namespace MaximStartsev.KanaTrainer.ViewModels
             Message = _model.CheckVariant((string)parameter) ? CommonResources.CorrectAnswerMessage : CommonResources.IncorrectAnswerMessage;
         }
 
-        private void InvokePropertyChanged(string propertyName)
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void InvokePropertyChanged(string property)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
     }
 }

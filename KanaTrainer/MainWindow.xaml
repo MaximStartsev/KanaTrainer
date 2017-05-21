@@ -40,17 +40,7 @@
             </TabItem>
             <TabItem Header="Мора -> слог (письмо)">
                 <TabItem.Content>
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Border BorderBrush="LightGray" BorderThickness="2" Margin="20"
-                                VerticalAlignment="Top" HorizontalAlignment="Center">
-                            <TextBlock Text="{Binding CurrentMora, FallbackValue='あ'}" Margin="20" FontSize="50" />
-                        </Border>
-                        <TextBox Text="{Binding Answer}" Grid.Row="1" Margin="10" Width="100" />
-                    </Grid>
+                    <views:WritingView DataContext="{Binding MoraToSyllableWriting}" />
                 </TabItem.Content>
             </TabItem>
         </TabControl>
