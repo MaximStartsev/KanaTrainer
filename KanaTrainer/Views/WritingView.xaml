@@ -18,20 +18,21 @@
             <TextBlock Text="{Binding CurrentMora, FallbackValue='あ'}" Margin="20" FontSize="50" />
         </Border>
         <Grid Grid.Row="1">
-            <Button Content="Назад" Margin="10" Width="100" HorizontalAlignment="Left"
-                                    Command="{Binding BackCommand}"/>
-            <TextBlock Text="{Binding Message, FallbackValue='Выберите верный вариант ответа'}"
+            <Button Content="{Binding BackButton,Source={StaticResource CommonResources}}" 
+                    Margin="10" Width="100" HorizontalAlignment="Left" Command="{Binding BackCommand}"/>
+            <TextBlock Text="{Binding Message}"
                                        VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <Button Content="Вперёд" Margin="10" Width="100" HorizontalAlignment="Right" 
-                                    Command="{Binding ForwardCommand}"/>
+            <Button Content="{Binding ForwardButton, Source={StaticResource CommonResources}}" 
+                    Margin="10" Width="100" HorizontalAlignment="Right" Command="{Binding ForwardCommand}"/>
         </Grid>
         <TextBox x:Name="Answer" Grid.Row="2" Margin="10" />
-        <Button Content="Проверить" Command="{Binding ReplyCommand}" CommandParameter="{Binding Text,ElementName=Answer}"
+        <Button Content="{Binding ReplyButton, Source={StaticResource CommonResources}}" 
+                Command="{Binding ReplyCommand}" CommandParameter="{Binding Text,ElementName=Answer}"
                 Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="10" Padding="10,2"/>
         <ComboBox Margin="2" Grid.Row="3"
-                      SelectedIndex="{Binding KanaType, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
-            <ComboBoxItem Content="Хирагана" />
-            <ComboBoxItem Content="Катакана" />
+                      SelectedIndex="{Binding Kana, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
+            <ComboBoxItem Content="{Binding HiraganaComboboxItem, Source={StaticResource CommonResources}}" />
+            <ComboBoxItem Content="{Binding KatakanaComboboxItem, Source={StaticResource CommonResources}}" />
         </ComboBox>
     </Grid>
 </UserControl>

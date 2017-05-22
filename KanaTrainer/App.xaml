@@ -2,8 +2,10 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:converters="clr-namespace:MaximStartsev.KanaTrainer.MVVM"
+             xmlns:resources="clr-namespace:MaximStartsev.KanaTrainer.Resources"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <converters:KanaTypeToInt32Converter x:Key="KanaToIntConverter" />
+        <resources:CommonResources x:Key="CommonResources" />
     </Application.Resources>
 </Application>

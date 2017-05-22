@@ -12,7 +12,7 @@
             <converters:KanaTypeToInt32Converter x:Key="KanaToIntConverter" />
         </Grid.Resources>
         <TabControl>
-            <TabItem Header="Транслятор">
+            <TabItem Header="{Binding TranslatorTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
                     <Grid>
                         <Grid.RowDefinitions>
@@ -22,23 +22,23 @@
                         <TextBox Text="{Binding TextConvert, Mode=TwoWay}" Margin="2" AcceptsReturn="True" />
                         <ComboBox Margin="2" Grid.Row="1"
                       SelectedIndex="{Binding KanaType, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
-                            <ComboBoxItem Content="Хирагана" />
-                            <ComboBoxItem Content="Катакана" />
+                            <ComboBoxItem Content="{Binding HiraganaComboboxItem,Source={StaticResource CommonResources}}" />
+                            <ComboBoxItem Content="{Binding KatakanaComboboxItem,Source={StaticResource CommonResources}}" />
                         </ComboBox>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem Header="Мора -> слог (тест)">
+            <TabItem Header="{Binding MoraToSyllableTestingTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
                     <views:TestingView DataContext="{Binding MoraToSyllableTesting}" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem Header="Слог -> мора (тест)">
+            <TabItem Header="{Binding SyllableToMoraTestingTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
                     <views:TestingView DataContext="{Binding SyllableToMoraTesting}" />
                 </TabItem.Content>
             </TabItem>
-            <TabItem Header="Мора -> слог (письмо)">
+            <TabItem Header="{Binding MoraToSyllableWritingTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
                     <views:WritingView DataContext="{Binding MoraToSyllableWriting}" />
                 </TabItem.Content>

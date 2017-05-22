@@ -22,7 +22,7 @@ namespace MaximStartsev.KanaTrainer.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class CommonResources {
+    public class CommonResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace MaximStartsev.KanaTrainer.Resources {
         ///   Возвращает кэшированный экземпляр ResourceManager, использованный этим классом.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MaximStartsev.KanaTrainer.Resources.CommonResources", typeof(CommonResources).Assembly);
@@ -51,7 +51,7 @@ namespace MaximStartsev.KanaTrainer.Resources {
         ///   обращений к ресурсу с помощью этого класса ресурса со строгой типизацией.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,29 +61,119 @@ namespace MaximStartsev.KanaTrainer.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Назад.
+        /// </summary>
+        public static string BackButton {
+            get {
+                return ResourceManager.GetString("BackButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Верно!.
         /// </summary>
-        internal static string CorrectAnswerMessage {
+        public static string CorrectAnswerMessage {
             get {
                 return ResourceManager.GetString("CorrectAnswerMessage", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вперёд.
+        /// </summary>
+        public static string ForwardButton {
+            get {
+                return ResourceManager.GetString("ForwardButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Хирагана.
+        /// </summary>
+        public static string HiraganaComboboxItem {
+            get {
+                return ResourceManager.GetString("HiraganaComboboxItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Неверный ответ. Попробуйте ещё раз..
         /// </summary>
-        internal static string IncorrectAnswerMessage {
+        public static string IncorrectAnswerMessage {
             get {
                 return ResourceManager.GetString("IncorrectAnswerMessage", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Введите транскипцию и нажмите &quot;Проверить&quot;.
+        /// </summary>
+        public static string InputTranscriptionMessage {
+            get {
+                return ResourceManager.GetString("InputTranscriptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Катакана.
+        /// </summary>
+        public static string KatakanaComboboxItem {
+            get {
+                return ResourceManager.GetString("KatakanaComboboxItem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Мора -&gt; слог (тест).
+        /// </summary>
+        public static string MoraToSyllableTestingTab {
+            get {
+                return ResourceManager.GetString("MoraToSyllableTestingTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Мора -&gt; слог (письмо).
+        /// </summary>
+        public static string MoraToSyllableWritingTab {
+            get {
+                return ResourceManager.GetString("MoraToSyllableWritingTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Проверить.
+        /// </summary>
+        public static string ReplyButton {
+            get {
+                return ResourceManager.GetString("ReplyButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выберите верный вариант ответа..
         /// </summary>
-        internal static string SelectValueMessage {
+        public static string SelectValueMessage {
             get {
                 return ResourceManager.GetString("SelectValueMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Слог -&gt; мора (тест).
+        /// </summary>
+        public static string SyllableToMoraTestingTab {
+            get {
+                return ResourceManager.GetString("SyllableToMoraTestingTab", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Транслятор.
+        /// </summary>
+        public static string TranslatorTab {
+            get {
+                return ResourceManager.GetString("TranslatorTab", resourceCulture);
             }
         }
     }

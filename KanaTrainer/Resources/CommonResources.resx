@@ -117,13 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BackButton" xml:space="preserve">
+    <value>Назад</value>
+  </data>
   <data name="CorrectAnswerMessage" xml:space="preserve">
     <value>Верно!</value>
+  </data>
+  <data name="ForwardButton" xml:space="preserve">
+    <value>Вперёд</value>
+  </data>
+  <data name="HiraganaComboboxItem" xml:space="preserve">
+    <value>Хирагана</value>
   </data>
   <data name="IncorrectAnswerMessage" xml:space="preserve">
     <value>Неверный ответ. Попробуйте ещё раз.</value>
   </data>
+  <data name="InputTranscriptionMessage" xml:space="preserve">
+    <value>Введите транскипцию и нажмите "Проверить"</value>
+  </data>
+  <data name="KatakanaComboboxItem" xml:space="preserve">
+    <value>Катакана</value>
+  </data>
+  <data name="MoraToSyllableTestingTab" xml:space="preserve">
+    <value>Мора -&gt; слог (тест)</value>
+  </data>
+  <data name="MoraToSyllableWritingTab" xml:space="preserve">
+    <value>Мора -&gt; слог (письмо)</value>
+  </data>
+  <data name="ReplyButton" xml:space="preserve">
+    <value>Проверить</value>
+  </data>
   <data name="SelectValueMessage" xml:space="preserve">
     <value>Выберите верный вариант ответа.</value>
+  </data>
+  <data name="SyllableToMoraTestingTab" xml:space="preserve">
+    <value>Слог -&gt; мора (тест)</value>
+  </data>
+  <data name="TranslatorTab" xml:space="preserve">
+    <value>Транслятор</value>
   </data>
 </root>

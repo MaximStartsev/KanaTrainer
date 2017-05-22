@@ -60,7 +60,7 @@ namespace MaximStartsev.KanaTrainer.ViewModels
         private void InvokeNext()
         {
             CurrentMora = _model.GetNext();
-            Message = CommonResources.SelectValueMessage;
+            Message = CommonResources.InputTranscriptionMessage;
         }
         private void InvokeReply(object parameter)
         {
