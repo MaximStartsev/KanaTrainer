@@ -83,6 +83,7 @@
     <Compile Include="Models\WritingModel.cs" />
     <Compile Include="MVVM\ActionCommand.cs" />
     <Compile Include="MVVM\VariantButtonType.cs" />
+    <Compile Include="MVVM\ViewModelBinding.cs" />
     <Compile Include="Resources\CommonResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

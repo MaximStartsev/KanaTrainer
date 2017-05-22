@@ -1,16 +1,15 @@
 ﻿<Window x:Class="MaximStartsev.KanaTrainer.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:converters="clr-namespace:MaximStartsev.KanaTrainer.MVVM"
+        xmlns:model="clr-namespace:MaximStartsev.KanaTrainer.Models"
+        xmlns:mvvm="clr-namespace:MaximStartsev.KanaTrainer.MVVM"
+        xmlns:viewmodel="clr-namespace:MaximStartsev.KanaTrainer.ViewModels"
         xmlns:views="clr-namespace:MaximStartsev.KanaTrainer.Views"
         mc:Ignorable="d"
         Title="Kana Trainer" Height="350" Width="525">
     <Grid>
-        <Grid.Resources>
-            <converters:KanaTypeToInt32Converter x:Key="KanaToIntConverter" />
-        </Grid.Resources>
         <TabControl>
             <TabItem Header="{Binding TranslatorTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
@@ -30,17 +29,20 @@
             </TabItem>
             <TabItem Header="{Binding MoraToSyllableTestingTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
-                    <views:TestingView DataContext="{Binding MoraToSyllableTesting}" />
+                    <views:TestingView DataContext="{mvvm:ViewModelBinding 
+                        ViewModelType={x:Type viewmodel:TestingViewModel}, ModelType={x:Type model:MoraToSyllableTestingModel}}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Header="{Binding SyllableToMoraTestingTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
-                    <views:TestingView DataContext="{Binding SyllableToMoraTesting}" />
+                    <views:TestingView DataContext="{mvvm:ViewModelBinding
+                        ViewModelType={x:Type viewmodel:TestingViewModel},ModelType={x:Type model:SyllableToMoraTestingModel}}" />
                 </TabItem.Content>
             </TabItem>
             <TabItem Header="{Binding MoraToSyllableWritingTab, Source={StaticResource CommonResources}}">
                 <TabItem.Content>
-                    <views:WritingView DataContext="{Binding MoraToSyllableWriting}" />
+                    <views:WritingView DataContext="{mvvm:ViewModelBinding
+                        ViewModelType={x:Type viewmodel:WritingViewModel},ModelType={x:Type model:MoraToSyllableWritingModel}}" />
                 </TabItem.Content>
             </TabItem>
         </TabControl>

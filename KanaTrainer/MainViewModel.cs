@@ -1,11 +1,6 @@
-﻿using MaximStartsev.KanaTrainer.Models;
-using MaximStartsev.KanaTrainer.MVVM;
-using MaximStartsev.KanaTrainer.Utilities;
-using MaximStartsev.KanaTrainer.ViewModels;
-using Microsoft.Practices.Unity;
+﻿using MaximStartsev.KanaTrainer.Utilities;
 using System;
 using System.ComponentModel;
-using System.Windows.Input;
 
 namespace MaximStartsev.KanaTrainer
 {
@@ -45,54 +40,8 @@ namespace MaximStartsev.KanaTrainer
             }
         }
 
-        public ICommand StartTrainingCommand { get; private set; }
-        private TestingViewModel _moraToSyllableTesting;
-        public TestingViewModel MoraToSyllableTesting
-        {
-            get
-            {
-                if(_moraToSyllableTesting == null)
-                {
-                    _moraToSyllableTesting = new TestingViewModel(new MoraToSyllableTestingModel());
-                }
-                return _moraToSyllableTesting;
-            }
-        }
-        private TestingViewModel  _syllableToMoraTesting;
-        public TestingViewModel SyllableToMoraTesting
-        {
-            get
-            {
-                if (_syllableToMoraTesting == null)
-                {
-                    _syllableToMoraTesting = new TestingViewModel(new SyllableToMoraTestingModel());
-                }
-                return _syllableToMoraTesting;
-            }
-        }
-        private WritingViewModel _moraToSyllableWriting;
-        public WritingViewModel MoraToSyllableWriting
-        {
-            get
-            {
-                if(_moraToSyllableWriting == null)
-                {
-                    _moraToSyllableWriting = new WritingViewModel(new MoraToSyllableWritingModel());
-                }
-                return _moraToSyllableWriting;
-            }
-        }
-        private readonly UnityContainer _container;
         public MainViewModel()
         {
-            _container = new UnityContainer();
-            _container.RegisterInstance(typeof(TestingViewModel));
-            _container.RegisterInstance(typeof(WritingViewModel));
-            StartTrainingCommand = new ActionCommand(o => StartTraining(), o => true);
-        }
-        public void StartTraining()
-        {
-
         }
 
         private static string ConvertText(string text, KanaType type)
