@@ -18,12 +18,18 @@
                             <RowDefinition />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBox Text="{Binding TextConvert, Mode=TwoWay}" Margin="2" AcceptsReturn="True" />
-                        <ComboBox Margin="2" Grid.Row="1"
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox Text="{Binding TextConvert, Mode=TwoWay}" Margin="2" AcceptsReturn="True" Grid.ColumnSpan="2" />
+                        <ComboBox Margin="2" Grid.Row="1" VerticalAlignment="Center"
                       SelectedIndex="{Binding KanaType, Mode=TwoWay, Converter={StaticResource KanaToIntConverter}}">
                             <ComboBoxItem Content="{Binding HiraganaComboboxItem,Source={StaticResource CommonResources}}" />
                             <ComboBoxItem Content="{Binding KatakanaComboboxItem,Source={StaticResource CommonResources}}" />
                         </ComboBox>
+                        <Button Grid.Column="1" Grid.Row="1" Padding="10,2" Margin="4,0,0,0" Command="{Binding TranslateCommand}"
+                                Content="{Binding TranslateButton, Source={StaticResource CommonResources}}"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>

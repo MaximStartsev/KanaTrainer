@@ -55,7 +55,12 @@ namespace MaximStartsev.KanaTrainer.ViewModels
         }
         private void InvokePrev()
         {
-
+            var prev = _model.GetPrev();
+            if(prev != null)
+            {
+                CurrentMora = prev;
+                Message = CommonResources.InputTranscriptionMessage;
+            }
         }
         private void InvokeNext()
         {

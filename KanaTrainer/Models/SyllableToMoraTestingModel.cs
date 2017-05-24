@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MaximStartsev.KanaTrainer.Utilities;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace MaximStartsev.KanaTrainer.Models
@@ -14,13 +16,21 @@ namespace MaximStartsev.KanaTrainer.Models
 
         public override TestIteration GetNext()
         {
+            var tuple = (Tuple<TestIteration, string>)HistoryProcessor.Next();
+            if (tuple != null)
+            {
+                Debug.WriteLine("Next from history");
+                _currentAnswer = tuple.Item2;
+                return tuple.Item1;
+            }
+            Debug.WriteLine("New next");
             var test = new TestIteration();
             KeyValuePair<string, string> pair = GetRandomPair();
             _currentAnswer = pair.Value;
             test.Question = pair.Key;
             var variantes = new string[4];
             test.Variantes = variantes;
-            variantes[_random.Next(4)] = pair.Value;
+            variantes[Randomize.GetNext(4)] = pair.Value;
             for (int i = 0; i < 4; i++)
             {
                 if (String.IsNullOrEmpty(variantes[i]))
@@ -33,7 +43,20 @@ namespace MaximStartsev.KanaTrainer.Models
                     variantes[i] = s;
                 }
             }
+            HistoryProcessor.Add(Tuple.Create(test, _currentAnswer));
             return test;
+        }
+
+        public override TestIteration GetPrev()
+        {
+            var tuple = (Tuple<TestIteration, string>)HistoryProcessor.Prev();
+            if (tuple != null)
+            {
+                Debug.WriteLine("Prev from history");
+                _currentAnswer = tuple.Item2;
+                return tuple.Item1;
+            }
+            return null;
         }
     }
 }

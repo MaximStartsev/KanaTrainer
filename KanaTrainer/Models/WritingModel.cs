@@ -7,9 +7,10 @@ namespace MaximStartsev.KanaTrainer.Models
 {
     internal abstract class WritingModel
     {
+        protected HistoryProcessor HistoryProcessor = new HistoryProcessor();
         public KanaType Kana { get; set; } = KanaType.Hiragana;
-        protected readonly Random _random = new Random();
         public abstract string GetNext();
+        public abstract string GetPrev();
         public abstract bool CheckVariant(string variant);
         protected KeyValuePair<string, string> GetRandomPair()
         {
@@ -17,12 +18,12 @@ namespace MaximStartsev.KanaTrainer.Models
             {
                 case KanaType.Hiragana:
                     {
-                        var index = _random.Next(HiraganaConverter.Instance.Alphabet.Count - 1);
+                        var index = Randomize.GetNext(HiraganaConverter.Instance.Alphabet.Count - 1);
                         return HiraganaConverter.Instance.Alphabet.ElementAt(index);
                     }
                 case KanaType.Katakana:
                     {
-                        var index = _random.Next(KatakanaConverter.Instance.Alphabet.Count - 1);
+                        var index = Randomize.GetNext(KatakanaConverter.Instance.Alphabet.Count - 1);
                         return KatakanaConverter.Instance.Alphabet.ElementAt(index);
                     }
                 default: throw new NotImplementedException();

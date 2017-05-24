@@ -153,6 +153,9 @@
   <data name="SyllableToMoraTestingTab" xml:space="preserve">
     <value>Слог -&gt; мора (тест)</value>
   </data>
+  <data name="TranslateButton" xml:space="preserve">
+    <value>Перевести</value>
+  </data>
   <data name="TranslatorTab" xml:space="preserve">
     <value>Транслятор</value>
   </data>

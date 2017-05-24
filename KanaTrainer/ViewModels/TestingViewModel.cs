@@ -1,7 +1,6 @@
 ﻿using MaximStartsev.KanaTrainer.Models;
 using MaximStartsev.KanaTrainer.MVVM;
 using MaximStartsev.KanaTrainer.Resources;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
@@ -59,7 +58,6 @@ namespace MaximStartsev.KanaTrainer.ViewModels
         public ICommand ReplyCommand { get; private set; }
         public ICommand BackCommand { get; private set; }
         public ICommand ForwardCommand { get; private set; }
-        private Random _random = new Random();
         private TestingModel _model;
         
         public TestingViewModel(TestingModel model)
@@ -72,7 +70,11 @@ namespace MaximStartsev.KanaTrainer.ViewModels
         }
         private void InvokePrev()
         {
-
+            var test = _model.GetPrev();
+            if (test == null) return;
+            CurrentMora = test.Question;
+            Variantes = test.Variantes;
+            Message = CommonResources.SelectValueMessage;
         }
         private void InvokeNext()
         {

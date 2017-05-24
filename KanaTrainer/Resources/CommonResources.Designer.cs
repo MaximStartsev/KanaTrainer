@@ -169,6 +169,15 @@ namespace MaximStartsev.KanaTrainer.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Перевести.
+        /// </summary>
+        public static string TranslateButton {
+            get {
+                return ResourceManager.GetString("TranslateButton", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Транслятор.
         /// </summary>
         public static string TranslatorTab {
